@@ -1,17 +1,18 @@
 import { useState } from 'react';
-import Input from './Input';
 
+import Input from './Input';
 import CalculatedList from './CalculatedList';
 
 const initialInputs = {
-  initialInvestment: 15000,
+  initialInvestment: 12000,
   annualInvestment: 900,
-  expectedReturn: 5.5,
-  duration: 10,
+  expectedReturn: 2,
+  duration: 9,
 };
 
 export default function Calculator() {
   const [userInputs, setUserInputs] = useState(initialInputs);
+  const isValidDuration = userInputs.duration > 0;
 
   function changeInputHandler(e) {
     const { id, value } = e.target;
@@ -53,7 +54,10 @@ export default function Calculator() {
           />
         </div>
       </section>
-      <CalculatedList userInputs={userInputs} />
+      {!isValidDuration && (
+        <p style={{ textAlign: 'center' }}>Enter valid duration</p>
+      )}
+      {isValidDuration && <CalculatedList userInputs={userInputs} />}
     </main>
   );
 }
