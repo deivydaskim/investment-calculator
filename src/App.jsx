@@ -1,11 +1,11 @@
-import CalculationInputs from './components/CalculationInputs';
+import Calculator from './components/Calculator';
 import Header from './components/Header';
 
 function App() {
   return (
     <>
       <Header />
-      <CalculationInputs />
+      <Calculator />
     </>
   );
 }
